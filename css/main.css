@@ -28,12 +28,25 @@
     padding-right: 10px;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 #place-list div:nth-child(odd) {
     border-bottom: 5px solid #e8282b;
+    border-top: 5px solid #e8282b;
+    transition: 0.3s;
 }
 
 #place-list div:nth-child(even) {
     border-bottom: 5px solid #20519e;
+    border-top: 5px solid #20519e;
+    transition: 0.3s;
+}
+
+#place-list div:hover {
+    border-bottom: 5px solid #F9D30D;
+    border-top: 5px solid #F9D30D;
 }
 
 @media screen and (max-width: 600px) {

@@ -5,6 +5,7 @@
   hasNewPlace = false,
   restaurantList = [];
 markers = [];
+markersRestaurantList = [];
 // restaurantList คือตัวแปรเก็บสถานที่กับร้านอาหารที่เคยค้นหาไปแล้ว
 // locationId คือตัวแปรที่เอาไว้เก็บ placeid ที่ได้มาจาก google ใช้สำหรับเช็คสถานที่ซ้ำในฟังก์ชั่น checkDuplicateSearchResult()
 // hasNewPlace คือตัวแปรเอาไว้เช็คว่าสถานที่ที่เราค้นหาเป็นสถานที่ใหม่หรือไม่
@@ -141,6 +142,10 @@ function createMarker(place) {
     );
 
     markers.push(marker);
+    markersRestaurantList.push({
+      id: place[i].place_id,
+      name: place[i].name,
+    });
   }
 }
 
@@ -149,11 +154,22 @@ function renderRestaurantList(place) {
   $("#place-list").html("");
   for (var i = 0; i < place.length; i++) {
     $("#place-list").append(
-      "<div class='p-3'><p class='font-weight-bold'>" +
+      "<div class='p-3 pointer' onclick='triggerMarker(\"" +
+        place[i].place_id +
+        "\")'><p class='font-weight-bold pointer' >" +
         place[i].name +
         "</p><p class='m-0'>" +
         place[i].vicinity +
         "</p></div>"
     );
+  }
+}
+
+//ฟังก์ชั่นกดที่ div รายชื่อร้านอาหารเพื่อ trigger marker แสดง infowindow เหมือนกด click marker ตรงๆ
+function triggerMarker(id) {
+  for (var i = 0; i < markersRestaurantList.length; i++) {
+    if (markersRestaurantList[i].id == id) {
+      google.maps.event.trigger(markers[i], "click");
+    }
   }
 }
