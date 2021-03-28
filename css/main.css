@@ -1,0 +1,46 @@
+﻿* {
+    font-family: 'Sarabun', sans-serif !important;
+}
+
+#place-list {
+    height: 100vh;
+    overflow: auto;
+}
+
+#map {
+    width: 100%;
+    height: 100%
+}
+
+.logo {
+    width: 100px;
+}
+
+.menu-bar {
+    padding: 5px;
+    background: black;
+}
+
+.menu-title {
+    float: right;
+    margin-top: 8px;
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+#place-list div:nth-child(odd) {
+    border-bottom: 5px solid #e8282b;
+}
+
+#place-list div:nth-child(even) {
+    border-bottom: 5px solid #20519e;
+}
+
+@media screen and (max-width: 600px) {
+    #place-list {
+        height: 300px;
+    }
+    #map {
+        height: 100vh;
+    }
+}
